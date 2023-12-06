@@ -2,15 +2,15 @@ const config = require('config')
 const Koop = require('@koopjs/koop-core')
 const routes = require('./routes')
 const plugins = require('./plugins')
-
+require('dotenv').config()
 // initiate a koop app
 const koop = new Koop({
   'ghtoken': process.env.GITHUB_KEY
 })
-
+console.log(plugins)
 // register koop plugins
 plugins.forEach((plugin) => {
-  koop.register(plugin.instance, plugin.options)
+  koop.register(plugin.instance, plugin?.options)
 })
 
 // add additional routes
